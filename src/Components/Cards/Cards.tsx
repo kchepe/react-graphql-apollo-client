@@ -5,13 +5,13 @@ import EmptyPlaceholder from "../EmptyPlaceholder/EmptyPlaceholder";
 import "./cards.style.css";
 
 interface CardProps {
-  characters: ICharacters[] | null;
+  characters: ICharacters[];
 }
 
 const Cards = ({ characters }: CardProps) => {
   return (
     <>
-      {characters && characters.length !== 0 ? (
+      {characters.length !== 0 ? (
         characters.map((character) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={character.id}>
             <Card className="cardContainer">

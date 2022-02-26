@@ -10,19 +10,17 @@ import SearchField from "../SeachField/SearchField";
 
 const CardContainer = () => {
   const { error, loading, data } = useQuery(getAllCharacters);
-  const [characters, setCharacters] = useState<ICharacters[] | null>(null);
+  const [characters, setCharacters] = useState<ICharacters[]>([]);
   const [showError, setShowError] = useState<boolean>(false);
   const [filterText, setFilterText] = useState<string>("");
 
-  const filteredCharacters =
-    characters &&
-    characters.filter((value) => {
-      if (
-        toLowerCase(value.name).includes(toLowerCase(filterText)) ||
-        toLowerCase(value.species).includes(toLowerCase(filterText))
-      )
-        return value;
-    });
+  const filteredCharacters = characters.filter((value) => {
+    if (
+      toLowerCase(value.name).includes(toLowerCase(filterText)) ||
+      toLowerCase(value.species).includes(toLowerCase(filterText))
+    )
+      return value;
+  });
 
   useEffect(() => {
     if (!error) {
